@@ -13,8 +13,9 @@ def find_circle_params(A,B,C):
     X = np.array([A[0] ** 2 + A[1] ** 2, B[0] ** 2 + B[1] ** 2, C[0] ** 2 + C[1] ** 2])  # vypocet prave strany soustavy rovnic
     try:
         L=np.linalg.solve(M,X)  # vyreseni soustavy souradnic
+        S = [L[0],L[1]]
         r = math.sqrt(L[0] ** 2 + L[1] ** 2 - L[2]) # vypocet polomeru
-        print('Souradnice stredu kruznice jsou[{};{}] a polomer je: {}'.format(L[0],L[1],r))
+        print('Souradnice stredu kruznice jsou[{};{}] a polomer je: {}'.format(S[0],S[1],r))
         draw_circle(A, B, C, L, r)  # vykresleni kruznice
     except:  # osetreni pripadu, kdy body lezi na primce
         print('soustava rovnic nema reseni, body lezi na primce')
@@ -33,19 +34,21 @@ def draw_circle(A,B,C,L,r):
     turtle.goto(A)  # vykresleni bodu
     turtle.down()
     turtle.dot(5, 'red')
+    turtle.write('A[{};{}]'.format(A[0],A[1]))
     turtle.up()
     turtle.goto(B)
     turtle.down()
     turtle.dot(5, 'red')
+    turtle.write('B[{};{}]'.format(B[0], B[1]))
     turtle.up()
     turtle.goto(C)
     turtle.down()
     turtle.dot(5, 'red')
-    turtle.up()
+    turtle.write('C[{};{}]'.format(C[0], C[1]))
 
     turtle.goto(L[0], L[1])  # vykresleni kruznice
-    turtle.down()
     turtle.dot(5)
+    turtle.write('S[{};{}] r = {}'.format(L[0], L[1], r))
     turtle.up()
     turtle.heading()
     turtle.right(90)
