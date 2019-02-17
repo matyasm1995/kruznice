@@ -127,8 +127,8 @@ def draw_circle(A,B,C,S,r):
     turtle.down()
     turtle.circle(r)
 
-A = [0,100]
-B = [50,10]
+A = [100,100]
+B = [100,0]
 C = [0,-100]
 
 test_points_on_line(A,B,C)
